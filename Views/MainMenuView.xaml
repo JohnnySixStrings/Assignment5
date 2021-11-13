@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Assignment5.Views.MainMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:viewmodels="clr-namespace:Assignment5.ViewModels" 
+             xmlns:enums="clr-namespace:Assignment5.Enums"
+             xmlns:converters="clr-namespace:Assignment5.Converters" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:MainMenuViewModel}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="{Binding BackgroundImageUri, Mode=OneWay}"/>
+        </Grid.Background>
+
+        <materialDesign:Card  Grid.Column="1" Panel.ZIndex="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20" Opacity="0.9">
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                <StackPanel.Resources>
+                    <converters:ComparisonConverter x:Key="ComparisonConverter" />
+                </StackPanel.Resources>
+
+                <TextBox
+                    x:Name="NameTextBox"
+                    Text="{Binding Name}"
+                    materialDesign:HintAssist.Hint="Name"
+                    Margin="2,8,2,8"  
+                    >
+                </TextBox>
+                <TextBox
+                    x:Name="AgeTextBox"
+                    Text="{Binding Age}"
+                    materialDesign:HintAssist.Hint="Age"
+                    Margin="2,8,2,8"  >
+                </TextBox>
+                <Label
+                    Content="{Binding ErrorText}"
+                    Visibility="{Binding ShowError}" 
+                    x:Name="ErrorMessage"
+                    Foreground="Red"
+                    />
+                <RadioButton GroupName="GameTypeRadioButton" Content="Addition"  IsChecked="{Binding GameType, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static enums:GameType.Addition}}" Margin="7"/>
+                <RadioButton GroupName="GameTypeRadioButton" Content="Subtraction" IsChecked="{Binding GameType,Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static enums:GameType.Subtraction}}" Margin="7"/>
+                <RadioButton GroupName="GameTypeRadioButton" Content="Multiplication" IsChecked="{Binding GameType, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static enums:GameType.Multiplication}}" Margin="7"/>
+                <RadioButton GroupName="GameTypeRadioButton" Content="Division"  IsChecked="{Binding GameType, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static enums:GameType.Division}}" Margin="7"/>
+                <Button Content="Start Game" x:Name="StartGameButton" Margin="5"/>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

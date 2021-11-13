@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\GameImage.jpg" />
+    <None Remove="Images\HighScore.jpg" />
+    <None Remove="Images\LowScore.jpg" />
+    <None Remove="Images\MainMenuImage.jpg" />
+    <None Remove="Images\MidScore.jpg" />
+    <None Remove="Sounds\Blaster.wav" />
+    <None Remove="Sounds\Hit.wav" />
+    <None Remove="Sounds\StartGame.wav" />
+    <None Remove="Sounds\StartGameMainMenu.wav" />
+    <None Remove="Sounds\Sword.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\MidScore.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\HighScore.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.2.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.11" />
+    <PackageReference Include="ReactiveUI" Version="16.2.6" />
+    <PackageReference Include="ReactiveUI.WPF" Version="16.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\GameImage.jpg" />
+    <Resource Include="Images\LowScore.jpg" />
+    <Resource Include="Images\MainMenuImage.jpg" />
+    <EmbeddedResource Include="Sounds\Blaster.wav" />
+    <EmbeddedResource Include="Sounds\Hit.wav" />
+    <EmbeddedResource Include="Sounds\StartGame.wav" />
+    <EmbeddedResource Include="Sounds\StartGameMainMenu.wav" />
+    <EmbeddedResource Include="Sounds\Sword.wav" />
+  </ItemGroup>
+
+</Project>
